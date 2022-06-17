@@ -90,12 +90,6 @@ const DatePicker = (props: Iprops) => {
   };
 
   const onSelectMonth = (month = selectedMonth) => {
-    console.log(
-      month < currentMonth || selectedYear <= currentYear,
-      month < currentMonth,
-      selectedYear <= currentYear
-    );
-
     setselectedMonth(month);
     if (!!selectedDay)
       if (isPrevDay(selectedDay, month) && !props.canSelectPrevDate) {
