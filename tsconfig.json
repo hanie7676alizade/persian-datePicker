@@ -20,6 +20,11 @@
     "noEmit": true,
     "jsx": "react-jsx","baseUrl": "./src"
   },
-  "include": ["src", "public", "src/app.jsx", ".env"]
+  "include": [
+    "src",
+    "public", 
+    "src/app.jsx", 
+    ".env"
+  ]
 
 }
