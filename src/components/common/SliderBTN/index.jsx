@@ -32,7 +32,7 @@ const SliderBTN = (props) => {
       {showList && (
         <ul>
           {props.list.map((item, index) => {
-            console.log(`${index - props.value}`);
+            console.log(`${index - props.value * 27}`);
             return (
               <li
                 onClick={() => onSelectItem(index)}

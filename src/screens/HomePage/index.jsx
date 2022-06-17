@@ -1,10 +1,11 @@
 import MainComponent from "components/screens/HomePage/Main";
+import { Fragment } from "react";
 
 const HomePage = () => {
   return (
-    <div>
+    <Fragment>
       <MainComponent />
-    </div>
+    </Fragment>
   );
 };
 export default HomePage;

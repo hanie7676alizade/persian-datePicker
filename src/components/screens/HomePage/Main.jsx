@@ -32,7 +32,7 @@ const MainComponent = () => {
   };
 
   return (
-    <div className={classes.mainWrapper}>
+    <section className={classes.mainWrapper}>
       <DatePicker
         yearList={yearList}
         weekDays={weekDays}
@@ -41,7 +41,7 @@ const MainComponent = () => {
         onChange={changeDate}
         canSelectPrevDate={false}
       />
-    </div>
+    </section>
   );
 };
 

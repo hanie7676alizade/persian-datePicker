@@ -20,7 +20,7 @@ const DatePicker = (props) => {
     props.yearList.indexOf(currentYear)
   );
 
-  const [showDatePicker, setShowDatePicker] = useState(false);
+  const [showDatePicker, setShowDatePicker] = useState(true);
 
   const datePickerSection = useRef(null);
 
@@ -29,17 +29,18 @@ const DatePicker = (props) => {
   };
 
   const hideDatePicker = (event) => {
-    console.log(event.relatedTarget, datePickerSection.current);
-    if (!event || event.relatedTarget !== datePickerSection.current) {
-      setTimeout(() => {
-        setShowDatePicker(!showDatePicker);
-      }, 180);
-    }
+    // if (!event || event.relatedTarget !== datePickerSection.current) {
+    //   setTimeout(() => {
+    //     setShowDatePicker(false);
+    //   }, 180);
+    // }
   };
   const setInputDate = (year, month, day) => {
     console.log(props.yearList[year] + "/" + month + "/" + day, "update input");
     if (!!day) {
       inputRef.current.value = props.yearList[year] + "/" + month + "/" + day;
+    } else {
+      inputRef.current.value = "";
     }
   };
   const onSelectYear = (year = selectedYear) => {
@@ -48,8 +49,18 @@ const DatePicker = (props) => {
   };
 
   const onSelectMonth = (month = selectedMonth) => {
+    console.log(
+      month < currentMonth && selectedYear <= currentYear,
+      month < currentMonth,
+      selectedYear <= currentYear
+    );
     setselectedMonth(month);
-    setInputDate(selectedYear, month, selectedDay);
+    if (month < currentMonth && selectedYear <= currentYear) {
+      setselectedDay(null);
+      setInputDate(null, null, null);
+    } else {
+      setInputDate(selectedYear, month, selectedDay);
+    }
   };
 
   const onSelectDay = (day = selectedDay) => {
@@ -66,21 +77,6 @@ const DatePicker = (props) => {
   };
 
   const isPrevDay = (day) => {
-    console.log(
-      (props.yearList[selectedYear] === currentYear &&
-        selectedMonth === currentMonth &&
-        day < currentDay) ||
-        (props.yearList[selectedYear] === currentYear &&
-          selectedMonth < currentMonth) ||
-        props.yearList[selectedYear] < currentYear,
-      "ddd",
-      props.yearList[selectedYear] === currentYear,
-      selectedMonth === currentMonth,
-      day < currentDay,
-      props.yearList[selectedYear] === currentYear,
-      selectedMonth < currentMonth,
-      props.yearList[selectedYear] < currentYear
-    );
     return (
       (props.yearList[selectedYear] === currentYear &&
         selectedMonth === currentMonth &&
@@ -108,23 +104,21 @@ const DatePicker = (props) => {
         // onBlur={hideDatePicker}
       />
       {showDatePicker && (
-        <div>
-          <DatePickerMain
-            yearList={props.yearList}
-            weekDays={props.weekDays}
-            canSelectPrevDate={props.canSelectPrevDate}
-            currentMonth={currentMonth}
-            currentYear={currentYear}
-            currentDay={currentDay}
-            selectedYear={selectedYear}
-            selectedMonth={selectedMonth}
-            selectedDay={selectedDay}
-            setselectedYear={onSelectYear}
-            setselectedMonth={onSelectMonth}
-            setselectedDay={onSelectDay}
-            isPrevDay={isPrevDay}
-          />
-        </div>
+        <DatePickerMain
+          yearList={props.yearList}
+          weekDays={props.weekDays}
+          canSelectPrevDate={props.canSelectPrevDate}
+          currentMonth={currentMonth}
+          currentYear={currentYear}
+          currentDay={currentDay}
+          selectedYear={selectedYear}
+          selectedMonth={selectedMonth}
+          selectedDay={selectedDay}
+          setselectedYear={onSelectYear}
+          setselectedMonth={onSelectMonth}
+          setselectedDay={onSelectDay}
+          isPrevDay={isPrevDay}
+        />
       )}
     </div>
   );
