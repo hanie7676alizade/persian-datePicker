@@ -1,0 +1,66 @@
+.wrapper {
+    position: relative;
+    display: flex;
+    height: 27px;
+    p {
+        min-width: 70px;
+        text-align: center;
+    }
+    input {
+        width: 70px;
+        padding: 0;
+        text-align: center;
+        background-color: #ffffff00;
+        border: none;
+        outline: none;
+        &:focus,
+        &:hover {
+            border: none;
+            outline: none;
+        }
+    }
+    ul {
+        box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.169);
+        background-color: rgb(255, 255, 255);
+        position: absolute;
+        width: 100%;
+        max-height: 200px;
+        overflow-y: scroll;
+        border-radius: 10px;
+        top: -20px;
+        li {
+            text-align: center;
+            position: relative;
+        }
+    }
+    button {
+        position: relative;
+        top: 5px;
+        width: 10px;
+        height: 10px;
+        padding: 10px;
+        background-color: #00000000;
+        border: none;
+        &::after {
+            display: block;
+            content: ' ';
+            width: 6px;
+            height: 6px;
+            border-top: 2px solid gray;
+            border-left: 2px solid gray;
+            position: absolute;
+            top: 5px;
+            left: 5px;
+        }
+        &:first-child {
+            &::after {
+                transform: rotate(135deg);
+            }
+        }
+        &:last-child {
+            &::after {
+                transform: rotate(-45deg);
+            }
+        }
+    }
+}
