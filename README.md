@@ -1,4 +1,6 @@
 # Date Picker project
+There are folders and file that are not related to this datepicker
+They are just to show the structure of the project
 
 ** I will write unit and E2E tests for this project **
 
