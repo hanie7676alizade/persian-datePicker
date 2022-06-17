@@ -16,7 +16,7 @@ const MainComponent = () => {
     "جمعه",
   ];
 
-  let yearList = [];
+  let yearList: number[] = [];
 
   const currentFaYear = parseInt(moment().format("YYYY"));
 
@@ -26,9 +26,9 @@ const MainComponent = () => {
     }
   })();
 
-  const changeDate = (value) => {
-    // console.log(value);
-    // props.onSetDatePickerValue(value ? value.toDate().getTime() : null);
+  const changeDate = (value: string) => {
+    // console.log(value, "date changed", moment(value).valueOf());
+    // API call and etc for saving date...
   };
 
   return (
@@ -37,7 +37,7 @@ const MainComponent = () => {
         yearList={yearList}
         weekDays={weekDays}
         placeholder="label"
-        defaultValue={null}
+        defaultValue={undefined}
         onChange={changeDate}
         canSelectPrevDate={false}
       />

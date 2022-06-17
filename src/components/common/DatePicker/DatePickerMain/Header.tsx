@@ -1,9 +1,16 @@
 import moment from "jalali-moment";
 
 import SliderBTN from "components/common/SliderBTN";
-import classes from "../DatePicker.module.scss";
 
-const Header = (props) => {
+interface Iprops {
+  yearList: number[];
+  currentMonth: number;
+  selectedYear: number;
+  selectedMonth: number;
+  setselectedYear: (value: number) => void;
+  setselectedMonth: (value: number) => void;
+}
+const Header = (props: Iprops) => {
   moment.locale("fa");
 
   const MonthList = [
@@ -21,16 +28,10 @@ const Header = (props) => {
     "اسفند",
   ];
 
-  // let yearList = [];
-
-  const currentFaYear = parseInt(moment().format("YYYY"));
-  const currentFaMonth = parseInt(moment().format("M"));
-
-  const setSelectedMonth = (index) => {
+  const setSelectedMonth = (index: number) => {
     props.setselectedMonth(index + 1);
   };
-  const setselectedYear = (index) => {
-    console.log(index, "setselectedYear");
+  const setselectedYear = (index: number) => {
     props.setselectedYear(index);
   };
 

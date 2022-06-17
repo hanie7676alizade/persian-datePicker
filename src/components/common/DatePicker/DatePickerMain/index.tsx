@@ -2,7 +2,23 @@ import Header from "./Header";
 import classes from "../DatePicker.module.scss";
 import DaysOfMonth from "./DaysOfMonth";
 
-const DatePickerMain = (props) => {
+interface Iprops {
+  yearList: number[];
+  weekDays: string[];
+  canSelectPrevDate: boolean;
+  currentMonth: number;
+  currentYear: number;
+  currentDay: number;
+  selectedYear: number;
+  selectedMonth: number;
+  selectedDay: number | null;
+  setselectedYear: (value: number) => void;
+  setselectedMonth: (value: number) => void;
+  setselectedDay: (value: number | null) => void;
+  isPrevDay: (value: number | null) => boolean | undefined;
+  setshowMessage: (value: boolean) => void;
+}
+const DatePickerMain = (props: Iprops) => {
   return (
     <section className={classes.mainWrapper}>
       <Header
@@ -26,6 +42,7 @@ const DatePickerMain = (props) => {
         setselectedDay={props.setselectedDay}
         setselectedMonth={props.setselectedMonth}
         isPrevDay={props.isPrevDay}
+        setshowMessage={props.setshowMessage}
       />
     </section>
   );

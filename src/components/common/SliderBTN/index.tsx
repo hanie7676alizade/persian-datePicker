@@ -1,7 +1,12 @@
 import { useState } from "react";
 import classes from "./SliderBTN.module.scss";
 
-const SliderBTN = (props) => {
+interface Iprops {
+  list: string[] | number[];
+  value: number;
+  changeCurrentIndex: (value: number) => void;
+}
+const SliderBTN = (props: Iprops) => {
   const [showList, setShowList] = useState(false);
   const decIndex = () => {
     if (props.value === 0) {
@@ -20,21 +25,21 @@ const SliderBTN = (props) => {
       props.changeCurrentIndex(props.value + 1);
     }
   };
-  const onSelectItem = (index) => {
+  const onSelectItem = (index: number) => {
     setShowList(false);
     props.changeCurrentIndex(index);
   };
   return (
     <div className={classes.wrapper}>
-      <button onClick={incIndex}></button>
+      <button onClick={incIndex} id="changeDateBTN"></button>
 
       <p onClick={() => setShowList(!showList)}>{props.list[props.value]}</p>
       {showList && (
         <ul>
           {props.list.map((item, index) => {
-            console.log(`${index - props.value * 27}`);
             return (
               <li
+                key={item}
                 onClick={() => onSelectItem(index)}
                 style={{ top: `${index - props.value}px` }}
               >
@@ -44,7 +49,7 @@ const SliderBTN = (props) => {
           })}
         </ul>
       )}
-      <button onClick={decIndex}></button>
+      <button onClick={decIndex} id="changeDateBTN"></button>
     </div>
   );
 };

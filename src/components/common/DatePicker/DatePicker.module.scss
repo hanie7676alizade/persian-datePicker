@@ -9,7 +9,6 @@ $dark:#1919194b;
 $noColor:#ffffff00;
 .DatePickerWrapper {
     position: relative;
-    background-color: red;
     .mainWrapper {
         background-color: #ffffff;
         box-shadow: 0px 0px 10px 2px $dark;
@@ -61,16 +60,16 @@ $noColor:#ffffff00;
                         border: 1px solid $ligthest;
                     }
                 }
-                .prevMonth {
-                    button {
-                        background-color: $ligth !important;
-                        color: #ffffff;
-                    }
-                }
                 .prevDay {
                     button {
                         color: $dark;
                         background-color: $ligthest !important;
+                    }
+                }
+                .prevMonth {
+                    button {
+                        background-color: $ligth !important;
+                        color: #ffffff;
                     }
                 }
                  :not(.prevDay, .prevMonth, .selectedDay) {
@@ -96,5 +95,13 @@ $noColor:#ffffff00;
                 }
             }
         }
+    }
+    .ErrTag {
+        z-index: 1000;
+        position: absolute;
+        top: 25px;
+        padding: 5px;
+        color: red;
+        font-size: 13px;
     }
 }
